@@ -1,0 +1,2 @@
+O(nm), time, n being the number of characters in a file and m being the length of length of pattern(for the hash function)
+O(1) space, because I am allocating contant space. 

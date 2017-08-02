@@ -1,0 +1,2 @@
+O(nm) time, with n the number of structs in the array and m being the maximum number of string.
+O(1) space.
