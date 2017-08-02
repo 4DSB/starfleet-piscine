@@ -39,7 +39,7 @@ struct s_art *dictSearch(struct s_dict *dict, char *key); //find one element in 
 
 int searchPrice(struct s_dict *dict, char *name);
 
-
+struct s_item *ht_newpair(char *key, struct s_art *value);
 /*--------------------------------
   ?? test function used in main 
   --------------------------------*/

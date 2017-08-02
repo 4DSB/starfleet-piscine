@@ -10,6 +10,7 @@ int main(void)
 	char *book;
 	char **words;
 	int lenWords;
+	//char *header;
 
 	//getting the book and the list of words
 	book = readBookFile();
@@ -18,13 +19,13 @@ int main(void)
 	/*-------------------
 	launch your test here
 	--------------------*/
-	//struct s_dict *dict;
-	//
-	//dict = dictInit(lenWords);
-	//
-	//for (int i = 0; i < lenWords; i++)
-	//	dictInsert(dict, words[i], i);
-	//
+	struct s_dict *dict;
+	dict = dictInit(lenWords);
+
+	for (int i = 0; i < lenWords; i++)
+		dictInsert(dict, words[i], i + 1);
+	
+	printf("%s", compress(book, dict));
 
 	return (0);
 }

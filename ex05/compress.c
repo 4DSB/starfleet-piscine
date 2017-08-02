@@ -1,17 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   searchPriceV3.c                                    :+:      :+:    :+:   */
+/*   compress.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amittal <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/08/01 11:33:27 by amittal           #+#    #+#             */
-/*   Updated: 2017/08/01 11:33:28 by amittal          ###   ########.fr       */
+/*   Created: 2017/08/01 19:14:17 by amittal           #+#    #+#             */
+/*   Updated: 2017/08/01 19:14:18 by amittal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
-#include "stdlib.h"
+#include <stdlib.h>
+#include <string.h>
+#include <stdio.h>
 
 
 size_t hash(char *input) //return hash result
@@ -28,6 +30,7 @@ size_t hash(char *input) //return hash result
     return hash;
 
 }
+
 
 
 struct s_dict *dictInit(int capacity) //initialize the dictionnary, given as parameter the capacity of the array.
@@ -49,8 +52,7 @@ struct s_dict *dictInit(int capacity) //initialize the dictionnary, given as par
 	dict->capacity = capacity;
 	return (dict);
 }
-
-struct s_item *ht_newpair(char *key, struct s_art *value)
+struct s_item *ht_newpair(char *key, int value)
 {
 	 struct s_item *newpair;
 
@@ -62,7 +64,7 @@ struct s_item *ht_newpair(char *key, struct s_art *value)
 	{
 		return NULL;
 	}
-	if(((newpair->value = value)) == NULL)
+	if(((newpair->value = value)) == 0)
 	{
 		return NULL;
 	}
@@ -71,7 +73,9 @@ struct s_item *ht_newpair(char *key, struct s_art *value)
 	return (newpair);
 }
 
-int	dictInsert(struct s_dict *dict, char *key, struct s_art *value) //add one element in the dictionnary, if FAIL return 0, otherwise 1
+
+
+int	dictInsert(struct s_dict *dict, char *key, int value) //add one item in the dictionnary, if FAIL return 0, otherwise 1
 {
 	size_t hasheval = 0;
 	size_t bin = 0;
@@ -80,7 +84,6 @@ int	dictInsert(struct s_dict *dict, char *key, struct s_art *value) //add one el
 	struct s_item *last = NULL;
 
 	hasheval = hash(key);
-
 	bin = hasheval % dict->capacity;
 	next = dict->items[bin];
 
@@ -93,10 +96,9 @@ int	dictInsert(struct s_dict *dict, char *key, struct s_art *value) //add one el
 	if (next != NULL && next->key !=NULL && strcmp(key, next->key) == 0)
 	{
 		//free(next->value);
-		next->value->name = strdup(value->name);
-		next->value->price = value->price;
+		next->key = key;
+		next->value = value;
 	}
-	/* Nope, could't find it.  Time to grow a pair. */
 	else
 	{
 		newpair = ht_newpair(key, value);
@@ -124,14 +126,16 @@ int	dictInsert(struct s_dict *dict, char *key, struct s_art *value) //add one el
 		}
 	}
 	return (1);
+
+
 }
 
-
-struct s_art *dictSearch(struct s_dict *dict, char *key) //find one element in the dictionnary, if not found, return NULL
+int	dictSearch(struct s_dict *dict, char *key) //find one element in the dictionnary, if not found, return -1
 {
 	size_t bin = 0;
 	struct s_item *pair;
 	size_t hasheval = 0;
+	
 
 	hasheval = hash(key);
 
@@ -144,8 +148,64 @@ struct s_art *dictSearch(struct s_dict *dict, char *key) //find one element in t
 	
 	/* Did we actually find anything? */
 	if (pair == NULL || pair ->key == NULL || strcmp(key, pair->key) != 0)
-		return (NULL);
+		return (-1);
 
 	else
 		return pair->value;
+}
+// OTHER
+
+int		ft_isalpha(int c)
+{
+	return ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'));
+}
+
+char *compress(char *book, struct s_dict *dict)
+{
+	char *p1;
+	char *p2;
+	int i;
+	//char *cbook;
+	char copy[2048];
+	int check;
+	char *head;
+	
+	
+	i = 0;
+	p1 = book;
+	p2 = book;
+	head = p1;
+	printf("!!!!");
+	while (!ft_isalpha(*p1) && !ft_isalpha(*p2))
+			{
+				p1++;
+				p2++;
+				printf("!!!!");
+			}
+	while (p1)
+	{
+		int i = 0;
+
+		while(ft_isalpha(p2[i]))
+		{
+			copy[i] = p2[i];
+			i++;
+		}
+		copy[i] = '\0';
+		check = dictSearch(dict, copy);
+		if (check != 0)
+		{
+			*p1 = '@';
+			p1++;
+			*p1 = (char)check;
+			
+		}
+		else 
+		{
+			p1 += i;
+		}
+		*(p1++) = *(p2++);
+	}
+	*p1 = '\0';
+	return (head);
 }

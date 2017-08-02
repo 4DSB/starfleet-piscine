@@ -1,6 +1,8 @@
 #ifndef HEADER_H
 # define HEADER_H
 
+#include <string.h>
+#include "stdlib.h"
 /*--------------------------------
   !! required structure
   --------------------------------*/
@@ -24,6 +26,7 @@ struct s_dict {
 // DICTIONNARY
 
 size_t hash(char *input); //return hash result
+struct s_item *ht_newpair(char *key, int value);
 
 struct s_dict *dictInit(int capacity); //initialize the dictionnary, given as parameter the capacity of the array.
 int	dictInsert(struct s_dict *dict, char *key, int value); //add one item in the dictionnary, if FAIL return 0, otherwise 1
@@ -32,6 +35,8 @@ int	dictSearch(struct s_dict *dict, char *key); //find one element in the dictio
 // OTHER
 
 char *compress(char *book, struct s_dict *dict);
+
+int		ft_isalpha(int c);
 
 /*--------------------------------
   ?? test function used in main 
