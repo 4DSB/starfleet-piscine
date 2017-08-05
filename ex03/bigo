@@ -1,2 +1,0 @@
-O(1) time, searching 
-O(n+k) space, where n is the number of elements and k is the capacity size. 

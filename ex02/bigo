@@ -1,4 +1,0 @@
-O(log(n)) time, with n the number of structs in the array. Log n because we are diving the prolem by 2 each time.
-            The more we divide the less number of elements we have to encounter.
-O(1) space, we are allocating memory a constant time due to the iterative approach.
-In a recursive approach it will be o(n) in the worst case senario.

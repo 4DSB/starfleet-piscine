@@ -1,3 +1,0 @@
-O(nlog(n)) time, with n the number of structs in the array. Log n because we are diving the prolem by 2 each time.
-            The more we divide the less number of elements we have to encounter.
-O(log(n)) space. We are allocating memory log(n) times.
