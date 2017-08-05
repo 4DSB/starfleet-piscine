@@ -1,0 +1,5 @@
+O(nm + k), time. Where n is the number of elements in the argument, text
+             and m is the highest absolute number in the list of numbers.
+Adding a node to a list has a time complexity of 1k as it is constant; where is k
+is the number of elements that need to be added in the list.
+O(k), where k is the number of elements that need to be added in the list.

@@ -1,0 +1,3 @@
+O(log(n)) time for binary search.
+O(n+k) time for radix algo, counting sort creates multiple arrays, one based on the size of K, and one based on the size of N
+O(n+k) space.

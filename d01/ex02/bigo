@@ -1,0 +1,4 @@
+O(1) time, for push and pop operations
+O(n) time, n is the number of times one performs push and pop
+O(n) space, n is the number of s_nodes given to store on the stack
+It is actually O(2n) but we consider 2n as n.

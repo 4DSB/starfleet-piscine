@@ -1,0 +1,3 @@
+O(1) time, for the operations: queueInit,enqueue,dequeue, peek and isempty 
+O(1) for the operations: queueInit,enqueue,dequeue, peek and isempty 
+O(n) space, within operation dequeue where n is the number of characters in the particular message.

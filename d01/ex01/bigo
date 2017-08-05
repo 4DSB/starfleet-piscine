@@ -1,0 +1,2 @@
+O(n) time, where n is the number of elements in the list.
+O(1) space, I am not performing any memory allocations except that for the function.

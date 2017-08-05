@@ -1,0 +1,4 @@
+O(1) time, for push and pop operations
+O(n) time, n is the number of messages/UNDOs
+O(1) space for push and pop operation;
+O(n) space, n is the 255 in out case.

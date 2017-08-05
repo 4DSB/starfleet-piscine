@@ -1,0 +1,2 @@
+O(n log(n)) time, cuz I am going through the array once and also dividing the problem into 2 halves
+O(n) space

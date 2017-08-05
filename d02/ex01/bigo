@@ -1,0 +1,2 @@
+O(n^2) time, one loop inside another.  Each setp has O(n^2) comparisons and swaps.
+O(1) space, using constant space.

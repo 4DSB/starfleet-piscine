@@ -1,0 +1,2 @@
+O(log(n)) time, because I am diving my problem into half.
+O(1) space.

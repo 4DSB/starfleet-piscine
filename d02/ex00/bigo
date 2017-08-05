@@ -1,0 +1,5 @@
+O(n(n+1)/2) time, this is the worst case complexity. n is the number of inputs
+The complexity will be musg less than this as I have 2 optimizations. 
+1. The algorithm never goes past the last swap 
+2. keeps a track if there are no swaps, the list is already sorted.
+O(1) space, I am allocating contant space.

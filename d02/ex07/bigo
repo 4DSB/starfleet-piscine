@@ -1,0 +1,4 @@
+O(n^2) time
+O(1) space
+
+I am using divide an conquere, I am sorting and then returning the 1st element.
