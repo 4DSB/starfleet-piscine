@@ -1,0 +1,6 @@
+-> might need to download node library
+from nose.tools import assert_equal
+	assert_equal(sol(2,2,),4)
+
+
+takes in itself as it is a class(self)
